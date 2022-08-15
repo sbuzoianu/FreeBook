@@ -1,12 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Configuration;
 
 namespace FreeBook
 {
     class SqlDataAccess
     {
-        public static string ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\student\2022-2023\Lucru_OJTI\FreeBook\FreeBookDB.mdf;Integrated Security=True";
+        public static string GetConnectionStrings()
+        {
+            return ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        }
 
+        public static string GetCartiPathStrings()
+        {
+            return ConfigurationManager.AppSettings["Carti"];
+        }
     }
 }

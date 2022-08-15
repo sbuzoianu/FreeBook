@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
+using System.Configuration;
+
 
 namespace FreeBook
 {
     class DatabaseHelper
     {
-        public static void Initialisation(string connectionString)
-        {
-            ClearDatabase(connectionString);
+        private static string _connectionString = SqlDataAccess.GetConnectionStrings();
+        private static string _cartiString = SqlDataAccess.GetCartiPathStrings();
 
-            using (SqlConnection con = new SqlConnection(connectionString))
+        public static void Initialisation()
+        {
+            ClearDatabase();
+
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
 
-                string filePath = "C://student//2022-2023//Lucru_OJTI//FreeBook//Resurse//carti.txt";
                 string cmdText = "Insert into carti (titlu,autor,gen) values (@titlu,@autor,@gen);";
 
-                using (StreamReader reader = new StreamReader(filePath))
+                using (StreamReader reader = new StreamReader(_cartiString))
                 {
                     int i = 0;
                     while (reader.Peek() >= 0)
@@ -27,8 +31,7 @@ namespace FreeBook
                         i++;
                         var line = reader.ReadLine().Split('*');
                         using (SqlCommand cmd = new SqlCommand(cmdText, con))
-                        {
-                            //   cmd.Parameters.AddWithValue("id", i);
+                        {                            
                             cmd.Parameters.AddWithValue("titlu", line[0]);
                             cmd.Parameters.AddWithValue("autor", line[1]);
                             cmd.Parameters.AddWithValue("gen", line[2]);
@@ -40,9 +43,9 @@ namespace FreeBook
             }
         }
 
-        private static void ClearDatabase(string connectionString)
+        private static void ClearDatabase()
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(_connectionString))
             {
                 con.Open();
 

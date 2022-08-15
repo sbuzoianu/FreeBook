@@ -20,7 +20,7 @@ namespace FreeBook
 
         private void FreeBook_Load(object sender, EventArgs e)
         {
-            DatabaseHelper.Initialisation(SqlDataAccess.ConnectionString);
+            DatabaseHelper.Initialisation();
         }
     }
 }
