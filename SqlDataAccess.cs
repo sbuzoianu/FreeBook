@@ -14,5 +14,15 @@ namespace FreeBook
         {
             return ConfigurationManager.AppSettings["Carti"];
         }
+
+        public static string GetUtilizatoriPathStrings()
+        {
+            return ConfigurationManager.AppSettings["Utilizatori"];
+        }
+
+        public static string GetImprumuturiPathStrings()
+        {
+            return ConfigurationManager.AppSettings["Imprumuturi"];
+        }
     }
 }
