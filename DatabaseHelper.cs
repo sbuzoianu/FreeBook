@@ -80,14 +80,12 @@ namespace FreeBook
 
         private static void InserareImprumuturi(SqlConnection con)
         {
-            string cmdText = "Insert into imprumut (id_imprumut,id_carte,email,data_imprumut) values (@id_imprumut,@id_carte,@email,@data_imprumut);";
+            string cmdText = "Insert into imprumut (id_carte,email,data_imprumut) values (@id_carte,@email,@data_imprumut);";
 
             using (StreamReader reader = new StreamReader(_imprumuturiString))
             {
-                int i = 0;
                 while (reader.Peek() >= 0)
                 {
-                    i++;
                     var line = reader.ReadLine().Split('*');
                     int idCarte = 0;
                     using (SqlCommand cmd = new SqlCommand("Select id_carte from carti where titlu = @titlu", con))
@@ -103,7 +101,6 @@ namespace FreeBook
 
                     using (SqlCommand cmd = new SqlCommand(cmdText, con))
                     {
-                        cmd.Parameters.AddWithValue("id_imprumut", i);
                         cmd.Parameters.AddWithValue("id_carte", idCarte);
                         cmd.Parameters.AddWithValue("email", line[1]);
                         string date = line[2].Trim();
