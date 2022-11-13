@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FreeBook.Forms;
 
 namespace FreeBook
 {
@@ -17,7 +18,9 @@ namespace FreeBook
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FreeBook());
+            //Application.Run(new FreeBook());
+            Application.Run(new FreeBookHome());
+
         }
     }
 }
