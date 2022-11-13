@@ -16,13 +16,13 @@ namespace FreeBook
         {
             InitializeComponent();
             this.btn_Exit.Click += btn_Exit_Click;
-
         }
+
         // event handlers
         private void FreeBook_Load(object sender, EventArgs e)
         {
             DatabaseHelper.Initialisation();
-            labelFormLoad.Text = "This text is set on startup !";
+            labelFormLoad.Text = "sunt la clasa X-D";
         }
 
 
@@ -42,5 +42,7 @@ namespace FreeBook
         private void btn_Exit_Click(object sender, EventArgs e) {
             Application.Exit();
         }
+
+ 
     }
 }

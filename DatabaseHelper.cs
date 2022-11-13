@@ -21,11 +21,12 @@ namespace FreeBook
             ClearDatabase();
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
+                
                 con.Open();
                 InserareCarti(con);
                 InserareUtilizatori(con);
                 InserareImprumuturi(con);
-
+                
             }
 
         }
@@ -60,10 +61,10 @@ namespace FreeBook
 
                 using (StreamReader reader = new StreamReader(_cartiString))
                 {
-                    int i = 0;
+                    //int i = 0;
                     while (reader.Peek() >= 0)
                     {
-                        i++;
+                       // i++;
                         var line = reader.ReadLine().Split('*');
                         using (SqlCommand cmd = new SqlCommand(cmdText, con))
                         {
