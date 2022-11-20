@@ -22,7 +22,13 @@ namespace FreeBook.Forms {
                 emailTextBox.Text != string.Empty) {
 
                 if (parolaTextBox.Text == confirmareParolaTextBox.Text) {
-                    MessageBox.Show("Parola corecta!");
+                    UserModel utilizator = new UserModel {
+                        email = emailTextBox.Text,
+                        nume = numeTextBox.Text,
+                        prenume = prenumeTextBox.Text,
+                        parola = parolaTextBox.Text
+                    };
+                        
 
                 } else {
                     MessageBox.Show("Parola nu a fost confirmata corect!");
