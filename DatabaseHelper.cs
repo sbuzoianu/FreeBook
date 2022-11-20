@@ -81,9 +81,12 @@ namespace FreeBook
             string cmdText = "Insert into imprumut (id_carte,email,data_imprumut) values (@id_carte,@email,@data_imprumut);";
             using (StreamReader reader = new StreamReader(_imprumuturiString))
             {
-                while (reader.Peek() >= 0)
+                string textLineFromFile;
+
+                //while (reader.Peek() >= 0)
+                while((textLineFromFile = reader.ReadLine()) != null)
                 {
-                    var line = reader.ReadLine().Split('*');
+                    string[] line = textLineFromFile.Split('*');
                     int idCarte = 0;
 
                     using (SqlCommand cmd = new SqlCommand("Select id_carte from carti where titlu = @titlu", con))

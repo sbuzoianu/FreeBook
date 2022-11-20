@@ -18,5 +18,11 @@ namespace FreeBook.Forms {
             DatabaseHelper.Initialisation();
 
         }
+
+        private void InregistrareBtn_Click(object sender, EventArgs e) {
+            CreeazaContFreeBook page = new CreeazaContFreeBook();
+            //page.Show(this);
+            page.ShowDialog(this);
+        }
     }
 }
