@@ -60,10 +60,8 @@ namespace FreeBook
 
                 using (StreamReader reader = new StreamReader(_cartiString))
                 {
-                    int i = 0;
                     while (reader.Peek() >= 0)
                     {
-                        i++;
                         var line = reader.ReadLine().Split('*');
                         using (SqlCommand cmd = new SqlCommand(cmdText, con))
                         {
@@ -81,15 +79,13 @@ namespace FreeBook
         private static void InserareImprumuturi(SqlConnection con)
         {
             string cmdText = "Insert into imprumut (id_carte,email,data_imprumut) values (@id_carte,@email,@data_imprumut);";
-            // string cmdText = "SET IDENTITY_INSERT imprumut ON; Insert into imprumut (id_imprumut,id_carte,email,data_imprumut) values (@id_imprumut,@id_carte,@email,@data_imprumut); SET IDENTITY_INSERT imprumut OFF;";
             using (StreamReader reader = new StreamReader(_imprumuturiString))
             {
-               // int i = 0; // pentru IDENTITY OFF - COLOANA ID_IMPRUMUT
                 while (reader.Peek() >= 0)
                 {
-                  //  i++;
                     var line = reader.ReadLine().Split('*');
                     int idCarte = 0;
+
                     using (SqlCommand cmd = new SqlCommand("Select id_carte from carti where titlu = @titlu", con))
                     {
                         cmd.Parameters.AddWithValue("titlu", line[0]);
@@ -103,11 +99,15 @@ namespace FreeBook
 
                     using (SqlCommand cmd = new SqlCommand(cmdText, con))
                     {
-                        // cmd.Parameters.AddWithValue("id_imprumut", i);
                         cmd.Parameters.AddWithValue("id_carte", idCarte);
                         cmd.Parameters.AddWithValue("email", line[1]);
                         string date = line[2].Trim();
-                        cmd.Parameters.AddWithValue("data_imprumut", DateTime.ParseExact(date, "M/d/yyyy", CultureInfo.InvariantCulture));
+                        try {
+                            cmd.Parameters.AddWithValue("data_imprumut", DateTime.ParseExact(date, "M/d/yyyy", CultureInfo.InvariantCulture));
+                        } catch {
+                            Console.WriteLine("eroare procesare pe linia " + line);
+                            cmd.Parameters.AddWithValue("data_imprumut", DateTime.Now);
+                        }
 
                         cmd.ExecuteNonQuery();
                     }
