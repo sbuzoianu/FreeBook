@@ -28,7 +28,17 @@ namespace FreeBook.Forms {
                         prenume = prenumeTextBox.Text,
                         parola = parolaTextBox.Text
                     };
-                        
+
+                    try {
+                        DatabaseHelper.UserRegistration(utilizator);
+                        //TODO: validare daca utilizatorul a fost adaugat cu succes!
+                        this.Close();
+                        this.Visible = false;
+                    } catch(Exception exc) {
+                        MessageBox.Show("Eroare la inregistare user: " + exc.Message);
+
+                    }
+
 
                 } else {
                     MessageBox.Show("Parola nu a fost confirmata corect!");

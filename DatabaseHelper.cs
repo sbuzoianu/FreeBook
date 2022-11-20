@@ -135,6 +135,23 @@ namespace FreeBook
             }
         }
 
+
+        public static void UserRegistration(UserModel user) {
+            using (SqlConnection con = new SqlConnection(_connectionString)) {
+                con.Open();
+                string cmdText = "Insert into utilizatori (email,parola,nume,prenume) values (@email,@parola,@nume,@prenume);";
+
+                using (SqlCommand cmd = new SqlCommand(cmdText, con)) {
+                    cmd.Parameters.AddWithValue("email", user.email);
+                    cmd.Parameters.AddWithValue("parola", user.parola);
+                    cmd.Parameters.AddWithValue("nume", user.nume);
+                    cmd.Parameters.AddWithValue("prenume", user.prenume);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         private static void ExecuteSQLQuery(SqlConnection con, string cmdText)
         {
             using (SqlCommand cmd = new SqlCommand(cmdText, con))
