@@ -32,6 +32,11 @@ namespace FreeBook.Forms {
                     try {
                         DatabaseHelper.UserRegistration(utilizator);
                         //TODO: validare daca utilizatorul a fost adaugat cu succes!
+                        utilizator = DatabaseHelper.IsRegistered(emailTextBox.Text);
+                        if(utilizator.email == emailTextBox.Text) {
+                            MessageBox.Show("User-ul:" + utilizator.email + "a fost inregistrat cu succes");
+                        }
+
                         this.Close();
                         this.Visible = false;
                     } catch(Exception exc) {

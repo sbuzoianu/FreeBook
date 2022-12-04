@@ -152,6 +152,31 @@ namespace FreeBook
             }
         }
 
+        public static UserModel IsRegistered(string email) {
+            UserModel utilizator = new UserModel();
+            using (SqlConnection con = new SqlConnection(_connectionString)) {
+                con.Open();
+                string cmdText = "Select email,parola,nume,prenume from utilizatori where email = @email";
+
+                using (SqlCommand cmd = new SqlCommand(cmdText, con)) {
+                    cmd.Parameters.AddWithValue("email", email);
+
+                    using (SqlDataReader rdr = cmd.ExecuteReader()) {
+                        if (rdr.Read()) {
+                            utilizator = new UserModel {
+                                email = (string)rdr["email"],
+                                parola = (string)rdr["parola"],
+                                nume = (string)rdr["nume"],
+                                prenume = (string)rdr["prenume"]
+                            };
+                        }
+                    }
+                }
+            }
+
+            return utilizator;
+        }
+
         private static void ExecuteSQLQuery(SqlConnection con, string cmdText)
         {
             using (SqlCommand cmd = new SqlCommand(cmdText, con))
