@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace FreeBook {
-    class UserModel {
+    public class UserModel {
 
         public string email { get; set; }
         public string parola { get; set; }

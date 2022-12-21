@@ -63,6 +63,7 @@ namespace FreeBook.Forms {
             this.LogareBtn.TabIndex = 2;
             this.LogareBtn.Text = "LOGIN";
             this.LogareBtn.UseVisualStyleBackColor = true;
+            this.LogareBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
             // InregistrareBtn
             // 

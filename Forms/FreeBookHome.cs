@@ -24,5 +24,10 @@ namespace FreeBook.Forms {
             //page.Show(this);
             page.ShowDialog(this);
         }
+
+        private void LoginBtn_Click(object sender, EventArgs e) {
+            var page = new LogareFreeBook()
+                .ShowDialog(this);
+        }
     }
 }

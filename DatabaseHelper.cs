@@ -36,17 +36,17 @@ namespace FreeBook
 
             using (StreamReader reader = new StreamReader(_utilizatoriString))
             {
-                int i = 0;
+               // int i = 0;
                 while (reader.Peek() >= 0)
                 {
-                    i++;
+                  //  i++;
                     var line = reader.ReadLine().Split('*');
                     using (SqlCommand cmd = new SqlCommand(cmdText, con))
                     {
-                        cmd.Parameters.AddWithValue("email", i);
-                        cmd.Parameters.AddWithValue("parola", line[0]);
-                        cmd.Parameters.AddWithValue("nume", line[1]);
-                        cmd.Parameters.AddWithValue("prenume", line[2]);
+                        cmd.Parameters.AddWithValue("email", line[0]);
+                        cmd.Parameters.AddWithValue("parola", line[1]);
+                        cmd.Parameters.AddWithValue("nume", line[2]);
+                        cmd.Parameters.AddWithValue("prenume", line[3]);
 
                         cmd.ExecuteNonQuery();
                     }

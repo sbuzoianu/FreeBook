@@ -13,6 +13,7 @@ namespace FreeBook.Forms {
             // vizibile doar in run-time
             emailLabel.Text = "Email";
             passwordLabel.Text = "Parola";
+            parolaTextBox.PasswordChar = '*';
         }
 
         private void groupBox1_Enter(object sender, EventArgs e) {
@@ -21,6 +22,19 @@ namespace FreeBook.Forms {
 
         private void logareButton_Click(object sender, EventArgs e) {
             //TODO: add logic to check curent credentials 
+            UserModel utilizator = DatabaseHelper.IsRegistered(emailTextBox.Text);
+
+            if(utilizator.parola == parolaTextBox.Text) {
+                this.Close();
+                this.Visible = false;
+                var page = new MeniuFreeBook() {
+                    Utilizator = utilizator
+                };
+                page.ShowDialog(this);
+            } 
+            else {
+                MessageBox.Show("Eorare autentificare");
+            }
         }
     }
 }

@@ -39,6 +39,11 @@ namespace FreeBook.Forms {
 
                         this.Close();
                         this.Visible = false;
+                        var page = new MeniuFreeBook() {
+                            Utilizator = utilizator
+                        };
+                        page.ShowDialog(this);
+
                     } catch(Exception exc) {
                         MessageBox.Show("Eroare la inregistare user: " + exc.Message);
 
