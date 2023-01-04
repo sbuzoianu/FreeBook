@@ -29,7 +29,10 @@ namespace FreeBook.Forms {
             this.cartiDisponibileTabPage = new System.Windows.Forms.TabPage();
             this.CartiImprumutateTabPage = new System.Windows.Forms.TabPage();
             this.statisticiBibliotecaTabPage = new System.Windows.Forms.TabPage();
+            this.cartiDisponibileDataGridView = new System.Windows.Forms.DataGridView();
             this.meniuTabControl.SuspendLayout();
+            this.cartiDisponibileTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // emailUtilizatorLabel
@@ -54,6 +57,7 @@ namespace FreeBook.Forms {
             // 
             // cartiDisponibileTabPage
             // 
+            this.cartiDisponibileTabPage.Controls.Add(this.cartiDisponibileDataGridView);
             this.cartiDisponibileTabPage.Location = new System.Drawing.Point(4, 24);
             this.cartiDisponibileTabPage.Name = "cartiDisponibileTabPage";
             this.cartiDisponibileTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -81,6 +85,15 @@ namespace FreeBook.Forms {
             this.statisticiBibliotecaTabPage.Text = "Statistici biblioteca";
             this.statisticiBibliotecaTabPage.UseVisualStyleBackColor = true;
             // 
+            // cartiDisponibileDataGridView
+            // 
+            this.cartiDisponibileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cartiDisponibileDataGridView.Location = new System.Drawing.Point(-4, -1);
+            this.cartiDisponibileDataGridView.Name = "cartiDisponibileDataGridView";
+            this.cartiDisponibileDataGridView.RowTemplate.Height = 25;
+            this.cartiDisponibileDataGridView.Size = new System.Drawing.Size(896, 461);
+            this.cartiDisponibileDataGridView.TabIndex = 0;
+            // 
             // MeniuFreeBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -92,6 +105,8 @@ namespace FreeBook.Forms {
             this.Text = "MeniuFreeBook";
             this.Load += new System.EventHandler(this.MeniuFreeBook_Load);
             this.meniuTabControl.ResumeLayout(false);
+            this.cartiDisponibileTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,5 +119,6 @@ namespace FreeBook.Forms {
         private System.Windows.Forms.TabPage cartiDisponibileTabPage;
         private System.Windows.Forms.TabPage CartiImprumutateTabPage;
         private System.Windows.Forms.TabPage statisticiBibliotecaTabPage;
+        private System.Windows.Forms.DataGridView cartiDisponibileDataGridView;
     }
 }
