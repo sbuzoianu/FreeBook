@@ -7,7 +7,7 @@ using System.Text;
 namespace FreeBook.DataAccess {
     class InitializareImprumuturiDatabase {
 
-        private static string _connectionString = SqlDataAccess.GetConnectionStrings();
+        private static readonly string _connectionString = SqlDataAccess.GetConnectionStrings();
 
         public static DataTable GetTable() {
 

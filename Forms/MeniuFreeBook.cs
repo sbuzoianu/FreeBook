@@ -16,19 +16,19 @@ namespace FreeBook.Forms {
             cartiDisponibileDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             cartiDisponibileDataGridView.ReadOnly = true;
             cartiDisponibileDataGridView.MultiSelect = false;
-            cartiDisponibileDataGridView.CellContentClick += new DataGridViewCellEventHandler(cartiDisponibileDataGridView_CellContentClick);
+            cartiDisponibileDataGridView.CellContentClick += new DataGridViewCellEventHandler(CartiDisponibileDataGridView_CellContentClick);
 
         }
 
-        private void cartiDisponibileDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void CartiDisponibileDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
             DataGridView dataGridView = (DataGridView)sender;
 
             if (dataGridView.Columns[e.ColumnIndex] is DataGridViewColumn) {
-                int nrCartiImprumutate = DatabaseHelper.NumberOfBorrowedBooks(Utilizator);
+                int nrCartiImprumutate = DatabaseHelper.NumarCartiImprumutate(Utilizator);
                 if (nrCartiImprumutate < 3) {
                     int idCarte = Int32.Parse((string)dataGridView.Rows[e.RowIndex].Cells["id_carte"].Value);
-                    DatabaseHelper.BorrowBook(idCarte, Utilizator);
+                    DatabaseHelper.ImprumutaCarte(idCarte, Utilizator);
 
                     dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Green;
                 } else {
@@ -43,11 +43,11 @@ namespace FreeBook.Forms {
             cartiDisponibileDataGridView.DataSource = InitializareImprumuturiDatabase.GetTable();
             cartiDisponibileDataGridView.Columns[0].Visible = false;
 
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            cartiDisponibileDataGridView.Columns.Add(btn);
-            btn.HeaderText = "Click data";
-            btn.Name = "btn";
-            btn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn buttonImprumutaCarte = new DataGridViewButtonColumn();
+            cartiDisponibileDataGridView.Columns.Add(buttonImprumutaCarte);
+            buttonImprumutaCarte.HeaderText = "Status Carte";
+            buttonImprumutaCarte.Name = "btn";
+            buttonImprumutaCarte.UseColumnTextForButtonValue = true;
 
 
             emailUtilizatorLabel.Text += Utilizator.email;

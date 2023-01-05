@@ -152,7 +152,7 @@ namespace FreeBook.Forms {
             this.inregistrareContBtn.TabIndex = 1;
             this.inregistrareContBtn.Text = "INREGISTRARE";
             this.inregistrareContBtn.UseVisualStyleBackColor = true;
-            this.inregistrareContBtn.Click += new System.EventHandler(this.inregistrareContBtn_Click);
+            this.inregistrareContBtn.Click += new System.EventHandler(this.InregistrareContBtn_Click);
             // 
             // CreeazaContFreeBook
             // 

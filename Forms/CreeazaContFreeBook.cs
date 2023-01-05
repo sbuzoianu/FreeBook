@@ -14,7 +14,7 @@ namespace FreeBook.Forms {
             confirmareParolaTextBox.PasswordChar = '*';
         }
 
-        private void inregistrareContBtn_Click(object sender, EventArgs e) {
+        private void InregistrareContBtn_Click(object sender, EventArgs e) {
             if (parolaTextBox.Text != string.Empty && 
                 confirmareParolaTextBox.Text != string.Empty &&
                 numeTextBox.Text != string.Empty &&
