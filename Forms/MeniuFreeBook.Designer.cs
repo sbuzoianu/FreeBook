@@ -27,12 +27,15 @@ namespace FreeBook.Forms {
             this.emailUtilizatorLabel = new System.Windows.Forms.Label();
             this.meniuTabControl = new System.Windows.Forms.TabControl();
             this.cartiDisponibileTabPage = new System.Windows.Forms.TabPage();
+            this.cartiDisponibileDataGridView = new System.Windows.Forms.DataGridView();
             this.CartiImprumutateTabPage = new System.Windows.Forms.TabPage();
             this.statisticiBibliotecaTabPage = new System.Windows.Forms.TabPage();
-            this.cartiDisponibileDataGridView = new System.Windows.Forms.DataGridView();
+            this.cartiImprumutateDataGridView = new System.Windows.Forms.DataGridView();
             this.meniuTabControl.SuspendLayout();
             this.cartiDisponibileTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).BeginInit();
+            this.CartiImprumutateTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cartiImprumutateDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // emailUtilizatorLabel
@@ -66,8 +69,18 @@ namespace FreeBook.Forms {
             this.cartiDisponibileTabPage.Text = "Carti disponibile";
             this.cartiDisponibileTabPage.UseVisualStyleBackColor = true;
             // 
+            // cartiDisponibileDataGridView
+            // 
+            this.cartiDisponibileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cartiDisponibileDataGridView.Location = new System.Drawing.Point(-4, -1);
+            this.cartiDisponibileDataGridView.Name = "cartiDisponibileDataGridView";
+            this.cartiDisponibileDataGridView.RowTemplate.Height = 25;
+            this.cartiDisponibileDataGridView.Size = new System.Drawing.Size(896, 461);
+            this.cartiDisponibileDataGridView.TabIndex = 0;
+            // 
             // CartiImprumutateTabPage
             // 
+            this.CartiImprumutateTabPage.Controls.Add(this.cartiImprumutateDataGridView);
             this.CartiImprumutateTabPage.Location = new System.Drawing.Point(4, 24);
             this.CartiImprumutateTabPage.Name = "CartiImprumutateTabPage";
             this.CartiImprumutateTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -85,14 +98,14 @@ namespace FreeBook.Forms {
             this.statisticiBibliotecaTabPage.Text = "Statistici biblioteca";
             this.statisticiBibliotecaTabPage.UseVisualStyleBackColor = true;
             // 
-            // cartiDisponibileDataGridView
+            // cartiImprumutateDataGridView
             // 
-            this.cartiDisponibileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cartiDisponibileDataGridView.Location = new System.Drawing.Point(-4, -1);
-            this.cartiDisponibileDataGridView.Name = "cartiDisponibileDataGridView";
-            this.cartiDisponibileDataGridView.RowTemplate.Height = 25;
-            this.cartiDisponibileDataGridView.Size = new System.Drawing.Size(896, 461);
-            this.cartiDisponibileDataGridView.TabIndex = 0;
+            this.cartiImprumutateDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cartiImprumutateDataGridView.Location = new System.Drawing.Point(20, 7);
+            this.cartiImprumutateDataGridView.Name = "cartiImprumutateDataGridView";
+            this.cartiImprumutateDataGridView.RowTemplate.Height = 25;
+            this.cartiImprumutateDataGridView.Size = new System.Drawing.Size(850, 395);
+            this.cartiImprumutateDataGridView.TabIndex = 0;
             // 
             // MeniuFreeBook
             // 
@@ -107,6 +120,8 @@ namespace FreeBook.Forms {
             this.meniuTabControl.ResumeLayout(false);
             this.cartiDisponibileTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).EndInit();
+            this.CartiImprumutateTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cartiImprumutateDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,5 +135,6 @@ namespace FreeBook.Forms {
         private System.Windows.Forms.TabPage CartiImprumutateTabPage;
         private System.Windows.Forms.TabPage statisticiBibliotecaTabPage;
         private System.Windows.Forms.DataGridView cartiDisponibileDataGridView;
+        private System.Windows.Forms.DataGridView cartiImprumutateDataGridView;
     }
 }

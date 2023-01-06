@@ -5,11 +5,11 @@ using System.Data.SqlClient;
 using System.Text;
 
 namespace FreeBook.DataAccess {
-    class InitializareImprumuturiDatabase {
+    class BibliotecaCartiFromDatabase {
 
         private static readonly string _connectionString = SqlDataAccess.GetConnectionStrings();
 
-        public static DataTable GetTable() {
+        public static DataTable GetDataToTable() {
 
             DataTable imprumuturiDataTable = new DataTable();
 

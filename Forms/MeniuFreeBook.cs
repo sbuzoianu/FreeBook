@@ -13,20 +13,45 @@ namespace FreeBook.Forms {
 
         public MeniuFreeBook() {
             InitializeComponent();
+
+            meniuTabControl.SelectedIndexChanged += MeniuTabControl_SelectedIndexChanged;
+
             cartiDisponibileDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             cartiDisponibileDataGridView.ReadOnly = true;
             cartiDisponibileDataGridView.MultiSelect = false;
+
+            // Incarcare Event Handler la click pe DataGridViewCell
             cartiDisponibileDataGridView.CellContentClick += new DataGridViewCellEventHandler(CartiDisponibileDataGridView_CellContentClick);
 
+            //cartiImprumutateDataGridView.
         }
+
+        private void MeniuTabControl_SelectedIndexChanged(object sender, EventArgs e) {
+            switch (meniuTabControl.SelectedIndex) {
+
+                case 0: {
+                        cartiDisponibileDataGridView.DataSource = BibliotecaCartiFromDatabase.GetDataToTable();
+                        break;
+                    }
+
+                case 1: {
+                        MessageBox.Show("This is " + meniuTabControl.SelectedTab.Name);
+                        break;
+                    }
+                case 2: {
+                        MessageBox.Show("This is " + meniuTabControl.SelectedTab.Name);
+                        break;
+                    }
+            }
+        }
+
 
         private void CartiDisponibileDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
             DataGridView dataGridView = (DataGridView)sender;
 
             if (dataGridView.Columns[e.ColumnIndex] is DataGridViewColumn) {
-                int nrCartiImprumutate = DatabaseHelper.NumarCartiImprumutate(Utilizator);
-                if (nrCartiImprumutate < 3) {
+                if (DatabaseHelper.NumarCartiImprumutate(Utilizator) < 3) {
                     int idCarte = Int32.Parse((string)dataGridView.Rows[e.RowIndex].Cells["id_carte"].Value);
                     DatabaseHelper.ImprumutaCarte(idCarte, Utilizator);
 
@@ -39,18 +64,23 @@ namespace FreeBook.Forms {
         }
 
         private void MeniuFreeBook_Load(object sender, EventArgs e) {
+            IncarcareCartiDisponibileTab();
 
-            cartiDisponibileDataGridView.DataSource = InitializareImprumuturiDatabase.GetTable();
-            cartiDisponibileDataGridView.Columns[0].Visible = false;
+            emailUtilizatorLabel.Text += Utilizator.email;
+        }
+
+        private void IncarcareCartiDisponibileTab() {
+            cartiImprumutateDataGridView.Rows.Clear();
+            cartiImprumutateDataGridView.Columns.Clear();
+
+            cartiDisponibileDataGridView.DataSource = BibliotecaCartiFromDatabase.GetDataToTable();
+            cartiDisponibileDataGridView.Columns[0].Visible = false; //coloana "id_carte" nu este afisata
 
             DataGridViewButtonColumn buttonImprumutaCarte = new DataGridViewButtonColumn();
             cartiDisponibileDataGridView.Columns.Add(buttonImprumutaCarte);
             buttonImprumutaCarte.HeaderText = "Status Carte";
             buttonImprumutaCarte.Name = "btn";
             buttonImprumutaCarte.UseColumnTextForButtonValue = true;
-
-
-            emailUtilizatorLabel.Text += Utilizator.email;
         }
     }
 }
