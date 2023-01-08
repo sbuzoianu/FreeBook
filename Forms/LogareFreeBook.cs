@@ -16,10 +16,6 @@ namespace FreeBook.Forms {
             parolaTextBox.PasswordChar = '*';
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e) {
-
-        }
-
         private void LogareButton_Click(object sender, EventArgs e) {
             //TODO: add logic to check curent credentials 
             UserModel utilizator = DatabaseHelper.IsRegistered(emailTextBox.Text);

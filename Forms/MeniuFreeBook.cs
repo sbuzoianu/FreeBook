@@ -23,23 +23,26 @@ namespace FreeBook.Forms {
             // Incarcare Event Handler la click pe DataGridViewCell
             cartiDisponibileDataGridView.CellContentClick += new DataGridViewCellEventHandler(CartiDisponibileDataGridView_CellContentClick);
 
-            //cartiImprumutateDataGridView.
+            cartiImprumutateProgressBar.Minimum = 0;
+            cartiImprumutateProgressBar.Maximum = 3;
+            cartiImprumutateProgressBar.Value = 3;
+
         }
 
         private void MeniuTabControl_SelectedIndexChanged(object sender, EventArgs e) {
             switch (meniuTabControl.SelectedIndex) {
 
                 case 0: {
-                        cartiDisponibileDataGridView.DataSource = BibliotecaCartiFromDatabase.GetDataToTable();
+                   //     cartiDisponibileDataGridView.DataSource = CartiFromDatabase.GetDataToTable();
                         break;
                     }
 
                 case 1: {
-                        MessageBox.Show("This is " + meniuTabControl.SelectedTab.Name);
+                        //MessageBox.Show("This is " + meniuTabControl.SelectedTab.Name);
                         break;
                     }
                 case 2: {
-                        MessageBox.Show("This is " + meniuTabControl.SelectedTab.Name);
+                       // MessageBox.Show("This is " + meniuTabControl.SelectedTab.Name);
                         break;
                     }
             }
@@ -64,6 +67,10 @@ namespace FreeBook.Forms {
         }
 
         private void MeniuFreeBook_Load(object sender, EventArgs e) {
+
+            // cartiDisponibileTabPage este incarcat automat deoarece el este primul
+            // mai jos -> incarcare explicita a TabPage-ului
+            meniuTabControl.SelectedTab = meniuTabControl.TabPages["cartiDisponibileTabPage"];
             IncarcareCartiDisponibileTab();
 
             emailUtilizatorLabel.Text += Utilizator.email;
@@ -73,7 +80,7 @@ namespace FreeBook.Forms {
             cartiImprumutateDataGridView.Rows.Clear();
             cartiImprumutateDataGridView.Columns.Clear();
 
-            cartiDisponibileDataGridView.DataSource = BibliotecaCartiFromDatabase.GetDataToTable();
+            cartiDisponibileDataGridView.DataSource = CartiFromDatabase.GetDataToTable();
             cartiDisponibileDataGridView.Columns[0].Visible = false; //coloana "id_carte" nu este afisata
 
             DataGridViewButtonColumn buttonImprumutaCarte = new DataGridViewButtonColumn();
@@ -82,5 +89,6 @@ namespace FreeBook.Forms {
             buttonImprumutaCarte.Name = "btn";
             buttonImprumutaCarte.UseColumnTextForButtonValue = true;
         }
+
     }
 }

@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Text;
 
 namespace FreeBook.DataAccess {
-    class BibliotecaCartiFromDatabase {
+    class CartiFromDatabase {
 
         private static readonly string _connectionString = SqlDataAccess.GetConnectionStrings();
 

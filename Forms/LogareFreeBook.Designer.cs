@@ -45,7 +45,6 @@ namespace FreeBook.Forms {
             this.logareGroupBox.TabIndex = 0;
             this.logareGroupBox.TabStop = false;
             this.logareGroupBox.Text = "Date utilizator";
-            this.logareGroupBox.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
             // emailLabel
             // 
