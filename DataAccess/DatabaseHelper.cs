@@ -91,10 +91,19 @@ namespace FreeBook
             }
             return nrCartiImprumutate;
         }
-
-        public static void ImprumutaCarte(int idCarte, UserModel utilizator) {
+        // 0 - operatie de imprumut carte reusita
+        // -1 - cartea a fost deja imprumutata de acest utilizator
+        public static int  ImprumutaCarte(int idCarte, UserModel utilizator) {
             using (SqlConnection con = new SqlConnection(_connectionString)) {
                 con.Open();
+
+                using (SqlCommand cmd = new SqlCommand("Select count(*) from imprumut where id_carte = @id_carte and email = @email", con)) {
+                    cmd.Parameters.AddWithValue("id_carte", idCarte);
+                    cmd.Parameters.AddWithValue("email", utilizator.email);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (count != 0)
+                        return -1;
+                }
 
                 string cmdText = "Insert into imprumut ( id_carte, email, data_imprumut ) values " +
                     "(@idCarte, @email, @data)";
@@ -108,6 +117,8 @@ namespace FreeBook
 
                     cmd.ExecuteNonQuery();
                 }
+
+                return 0;
             }
         }
         private static void InserareUtilizatori(SqlConnection con)

@@ -56,7 +56,9 @@ namespace FreeBook.Forms {
             if (dataGridView.Columns[e.ColumnIndex] is DataGridViewColumn) {
                 if (DatabaseHelper.NumarCartiImprumutate(Utilizator) < 3) {
                     int idCarte = Int32.Parse((string)dataGridView.Rows[e.RowIndex].Cells["id_carte"].Value);
-                    DatabaseHelper.ImprumutaCarte(idCarte, Utilizator);
+                    int operatieReusita = DatabaseHelper.ImprumutaCarte(idCarte, Utilizator);
+                    if (operatieReusita != 0)
+                        MessageBox.Show("Utilizatorul" + Utilizator.nume + " a imprumutat deja aceasta carte!");
 
                     dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Green;
                 } else {
