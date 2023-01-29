@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Configuration;
 using System.Globalization;
+using FreeBook.Models;
 
 namespace FreeBook
 {
@@ -121,7 +122,41 @@ namespace FreeBook
                 return 0;
             }
         }
-        private static void InserareUtilizatori(SqlConnection con)
+
+        public static List<ImprumutCarteModel> GetCartiImprumutateDeUtilizator(UserModel utilizator) {
+            List<ImprumutCarteModel> imprumuturi = new List<ImprumutCarteModel>();
+            int indexCarte = 0;
+            using (SqlConnection con = new SqlConnection(_connectionString)) {
+                con.Open();
+
+                string cmdText = "SELECT c.id_carte, c.titlu, c.autor, i.data_imprumut FROM carti c, imprumut i WHERE c.id_carte = i.id_carte AND i.email = @email";
+
+                using (SqlCommand cmd = new SqlCommand(cmdText, con)) {
+                    cmd.Parameters.AddWithValue("email", utilizator.email);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            indexCarte++;
+                            DateTime date = (DateTime)reader[3];
+                            ImprumutCarteModel imprumut = new ImprumutCarteModel {
+                                Index = indexCarte,
+                                IDCarte = (int)reader[0],
+                                Titlu = (string)reader[1],
+                                Autor = (string)reader[2],
+                                DataImprumut = date,
+                                DataDisponibilitate = date.AddDays(30),
+                                CarteExpirata = date < DateTime.Now ? true : false
+                        };
+                            imprumuturi.Add(imprumut);
+                        }
+                    }
+                }
+            }
+            return imprumuturi;
+        }
+
+
+            private static void InserareUtilizatori(SqlConnection con)
         {
             string cmdText = "Insert into utilizatori (email,parola,nume,prenume) values (@email,@parola,@nume,@prenume);";
 

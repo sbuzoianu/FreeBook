@@ -29,11 +29,11 @@ namespace FreeBook.Forms {
             this.cartiDisponibileTabPage = new System.Windows.Forms.TabPage();
             this.cartiDisponibileDataGridView = new System.Windows.Forms.DataGridView();
             this.CartiImprumutateTabPage = new System.Windows.Forms.TabPage();
+            this.cartiDisponibileLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cartiImprumutateProgressBar = new System.Windows.Forms.ProgressBar();
             this.cartiImprumutateDataGridView = new System.Windows.Forms.DataGridView();
             this.statisticiBibliotecaTabPage = new System.Windows.Forms.TabPage();
-            this.cartiImprumutateProgressBar = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.meniuTabControl.SuspendLayout();
             this.cartiDisponibileTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).BeginInit();
@@ -83,7 +83,7 @@ namespace FreeBook.Forms {
             // 
             // CartiImprumutateTabPage
             // 
-            this.CartiImprumutateTabPage.Controls.Add(this.label2);
+            this.CartiImprumutateTabPage.Controls.Add(this.cartiDisponibileLabel);
             this.CartiImprumutateTabPage.Controls.Add(this.label1);
             this.CartiImprumutateTabPage.Controls.Add(this.cartiImprumutateProgressBar);
             this.CartiImprumutateTabPage.Controls.Add(this.cartiImprumutateDataGridView);
@@ -94,6 +94,33 @@ namespace FreeBook.Forms {
             this.CartiImprumutateTabPage.TabIndex = 1;
             this.CartiImprumutateTabPage.Text = "Carti Imprumutate";
             this.CartiImprumutateTabPage.UseVisualStyleBackColor = true;
+            // 
+            // cartiDisponibileLabel
+            // 
+            this.cartiDisponibileLabel.AutoSize = true;
+            this.cartiDisponibileLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cartiDisponibileLabel.Location = new System.Drawing.Point(271, 410);
+            this.cartiDisponibileLabel.Name = "cartiDisponibileLabel";
+            this.cartiDisponibileLabel.Size = new System.Drawing.Size(39, 25);
+            this.cartiDisponibileLabel.TabIndex = 3;
+            this.cartiDisponibileLabel.Text = "3/3";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(6, 410);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(259, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Disponibilitate imprumuturi : ";
+            // 
+            // cartiImprumutateProgressBar
+            // 
+            this.cartiImprumutateProgressBar.Location = new System.Drawing.Point(431, 410);
+            this.cartiImprumutateProgressBar.Name = "cartiImprumutateProgressBar";
+            this.cartiImprumutateProgressBar.Size = new System.Drawing.Size(439, 34);
+            this.cartiImprumutateProgressBar.TabIndex = 1;
             // 
             // cartiImprumutateDataGridView
             // 
@@ -112,33 +139,6 @@ namespace FreeBook.Forms {
             this.statisticiBibliotecaTabPage.TabIndex = 2;
             this.statisticiBibliotecaTabPage.Text = "Statistici biblioteca";
             this.statisticiBibliotecaTabPage.UseVisualStyleBackColor = true;
-            // 
-            // cartiImprumutateProgressBar
-            // 
-            this.cartiImprumutateProgressBar.Location = new System.Drawing.Point(431, 410);
-            this.cartiImprumutateProgressBar.Name = "cartiImprumutateProgressBar";
-            this.cartiImprumutateProgressBar.Size = new System.Drawing.Size(439, 34);
-            this.cartiImprumutateProgressBar.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 410);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(259, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Disponibilitate imprumuturi : ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(271, 410);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "3/3";
             // 
             // MeniuFreeBook
             // 
@@ -172,6 +172,6 @@ namespace FreeBook.Forms {
         private System.Windows.Forms.DataGridView cartiImprumutateDataGridView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar cartiImprumutateProgressBar;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label cartiDisponibileLabel;
     }
 }

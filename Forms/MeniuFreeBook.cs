@@ -22,6 +22,10 @@ namespace FreeBook.Forms {
 
             // Incarcare Event Handler la click pe DataGridViewCell
             cartiDisponibileDataGridView.CellContentClick += new DataGridViewCellEventHandler(CartiDisponibileDataGridView_CellContentClick);
+            
+            
+            cartiImprumutateDataGridView.Rows.Clear();
+            cartiImprumutateDataGridView.Columns.Clear();
 
             cartiImprumutateProgressBar.Minimum = 0;
             cartiImprumutateProgressBar.Maximum = 3;
@@ -38,7 +42,18 @@ namespace FreeBook.Forms {
                     }
 
                 case 1: {
-                        //MessageBox.Show("This is " + meniuTabControl.SelectedTab.Name);
+                        cartiImprumutateDataGridView.DataSource = DataTableSourceFromDatabase.GetAllAssignedBooksIntoDataTable(Utilizator);
+                        cartiImprumutateDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        for (int i = 0; i < cartiImprumutateDataGridView.Rows.Count - 1; i++) {
+                            if (bool.Parse((string)cartiImprumutateDataGridView.Rows[i].Cells[5].Value)) {
+                                cartiImprumutateDataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                                cartiImprumutateProgressBar.Value--;
+                            } else {
+                                cartiImprumutateDataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Green;
+                                cartiImprumutateProgressBar.Value--;
+                            }
+                        }
+                        cartiDisponibileLabel.Text = cartiImprumutateProgressBar.Value.ToString() + "/3";
                         break;
                     }
                 case 2: {
@@ -82,7 +97,7 @@ namespace FreeBook.Forms {
             cartiImprumutateDataGridView.Rows.Clear();
             cartiImprumutateDataGridView.Columns.Clear();
 
-            cartiDisponibileDataGridView.DataSource = CartiFromDatabase.GetDataToTable();
+            cartiDisponibileDataGridView.DataSource = DataTableSourceFromDatabase.GetAllAvailableBooksIntoDataTable();
             cartiDisponibileDataGridView.Columns[0].Visible = false; //coloana "id_carte" nu este afisata
 
             DataGridViewButtonColumn buttonImprumutaCarte = new DataGridViewButtonColumn();
