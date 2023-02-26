@@ -22,15 +22,19 @@ namespace FreeBook.Forms {
 
             // Incarcare Event Handler la click pe DataGridViewCell
             cartiDisponibileDataGridView.CellContentClick += new DataGridViewCellEventHandler(CartiDisponibileDataGridView_CellContentClick);
-            
-            
+
+
             cartiImprumutateDataGridView.Rows.Clear();
             cartiImprumutateDataGridView.Columns.Clear();
 
+            SetCartiImprumutateProgressBar();
+
+        }
+
+        private void SetCartiImprumutateProgressBar() {
             cartiImprumutateProgressBar.Minimum = 0;
             cartiImprumutateProgressBar.Maximum = 3;
             cartiImprumutateProgressBar.Value = 3;
-
         }
 
         private void MeniuTabControl_SelectedIndexChanged(object sender, EventArgs e) {
@@ -44,6 +48,7 @@ namespace FreeBook.Forms {
                 case 1: {
                         cartiImprumutateDataGridView.DataSource = DataTableSourceFromDatabase.GetAllAssignedBooksIntoDataTable(Utilizator);
                         cartiImprumutateDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        SetCartiImprumutateProgressBar();
                         for (int i = 0; i < cartiImprumutateDataGridView.Rows.Count - 1; i++) {
                             if (bool.Parse((string)cartiImprumutateDataGridView.Rows[i].Cells[5].Value)) {
                                 cartiImprumutateDataGridView.Rows[i].DefaultCellStyle.BackColor = Color.Red;

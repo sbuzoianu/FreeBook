@@ -29,7 +29,7 @@ namespace FreeBook.Forms {
                 page.ShowDialog(this);
             } 
             else {
-                MessageBox.Show("Eorare autentificare");
+                MessageBox.Show("Eroare autentificare");
             }
         }
     }
