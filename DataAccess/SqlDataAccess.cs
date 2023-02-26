@@ -24,5 +24,9 @@ namespace FreeBook
         {
             return ConfigurationManager.AppSettings["Imprumuturi"];
         }
+
+        public static string GetCartiPDFPathStrings() {
+            return ConfigurationManager.AppSettings["FolderCartiPDF"];
+        }
     }
 }

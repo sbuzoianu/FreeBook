@@ -23,11 +23,22 @@ namespace FreeBook.Forms {
             // Incarcare Event Handler la click pe DataGridViewCell
             cartiDisponibileDataGridView.CellContentClick += new DataGridViewCellEventHandler(CartiDisponibileDataGridView_CellContentClick);
 
-
+            cartiImprumutateDataGridView.CellContentClick += new DataGridViewCellEventHandler(CartiImprumutateDataGridView_CellContentClick);
             cartiImprumutateDataGridView.Rows.Clear();
             cartiImprumutateDataGridView.Columns.Clear();
 
             SetCartiImprumutateProgressBar();
+
+        }
+
+        private void CartiImprumutateDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            this.Hide();
+            AfiseazaCarte carte = new AfiseazaCarte();
+            carte.afiseazaTitluLabel.Text = this.cartiImprumutateDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+            carte.afiseazaAutorLabel.Text = this.cartiImprumutateDataGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+            carte.indexCarteLabel.Text = this.cartiImprumutateDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            carte.ShowDialog();
+            this.Show();
 
         }
 

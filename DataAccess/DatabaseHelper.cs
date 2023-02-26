@@ -15,6 +15,7 @@ namespace FreeBook
         private static readonly string _cartiString = SqlDataAccess.GetCartiPathStrings();
         private static readonly string _utilizatoriString = SqlDataAccess.GetUtilizatoriPathStrings();
         private static readonly string _imprumuturiString = SqlDataAccess.GetImprumuturiPathStrings();
+        private static readonly string _cartiPDFString = SqlDataAccess.GetCartiPDFPathStrings();
 
         public static void Initialisation()
         {
