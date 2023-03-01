@@ -24,6 +24,10 @@ namespace FreeBook.Forms {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.emailUtilizatorLabel = new System.Windows.Forms.Label();
             this.meniuTabControl = new System.Windows.Forms.TabControl();
             this.cartiDisponibileTabPage = new System.Windows.Forms.TabPage();
@@ -34,11 +38,19 @@ namespace FreeBook.Forms {
             this.cartiImprumutateProgressBar = new System.Windows.Forms.ProgressBar();
             this.cartiImprumutateDataGridView = new System.Windows.Forms.DataGridView();
             this.statisticiBibliotecaTabPage = new System.Windows.Forms.TabPage();
+            this.statisticiTabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.anImprumutLabel = new System.Windows.Forms.Label();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.meniuTabControl.SuspendLayout();
             this.cartiDisponibileTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).BeginInit();
             this.CartiImprumutateTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiImprumutateDataGridView)).BeginInit();
+            this.statisticiBibliotecaTabPage.SuspendLayout();
+            this.statisticiTabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // emailUtilizatorLabel
@@ -74,7 +86,23 @@ namespace FreeBook.Forms {
             // 
             // cartiDisponibileDataGridView
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartiDisponibileDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.cartiDisponibileDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cartiDisponibileDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.cartiDisponibileDataGridView.Location = new System.Drawing.Point(-4, -1);
             this.cartiDisponibileDataGridView.Name = "cartiDisponibileDataGridView";
             this.cartiDisponibileDataGridView.RowTemplate.Height = 25;
@@ -124,7 +152,23 @@ namespace FreeBook.Forms {
             // 
             // cartiImprumutateDataGridView
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.cartiImprumutateDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.cartiImprumutateDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.cartiImprumutateDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.cartiImprumutateDataGridView.Location = new System.Drawing.Point(20, 7);
             this.cartiImprumutateDataGridView.Name = "cartiImprumutateDataGridView";
             this.cartiImprumutateDataGridView.RowTemplate.Height = 25;
@@ -133,12 +177,63 @@ namespace FreeBook.Forms {
             // 
             // statisticiBibliotecaTabPage
             // 
+            this.statisticiBibliotecaTabPage.Controls.Add(this.statisticiTabControl);
             this.statisticiBibliotecaTabPage.Location = new System.Drawing.Point(4, 24);
             this.statisticiBibliotecaTabPage.Name = "statisticiBibliotecaTabPage";
             this.statisticiBibliotecaTabPage.Size = new System.Drawing.Size(892, 460);
             this.statisticiBibliotecaTabPage.TabIndex = 2;
             this.statisticiBibliotecaTabPage.Text = "Statistici biblioteca";
             this.statisticiBibliotecaTabPage.UseVisualStyleBackColor = true;
+            // 
+            // statisticiTabControl
+            // 
+            this.statisticiTabControl.Controls.Add(this.tabPage1);
+            this.statisticiTabControl.Controls.Add(this.tabPage2);
+            this.statisticiTabControl.Location = new System.Drawing.Point(3, 3);
+            this.statisticiTabControl.Name = "statisticiTabControl";
+            this.statisticiTabControl.SelectedIndex = 0;
+            this.statisticiTabControl.Size = new System.Drawing.Size(889, 454);
+            this.statisticiTabControl.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dateTimePicker);
+            this.tabPage1.Controls.Add(this.anImprumutLabel);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(881, 426);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Numar utilizatori";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(881, 426);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Carti populare";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // anImprumutLabel
+            // 
+            this.anImprumutLabel.AutoSize = true;
+            this.anImprumutLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.anImprumutLabel.Location = new System.Drawing.Point(7, 21);
+            this.anImprumutLabel.Name = "anImprumutLabel";
+            this.anImprumutLabel.Size = new System.Drawing.Size(127, 25);
+            this.anImprumutLabel.TabIndex = 0;
+            this.anImprumutLabel.Text = "An Imprumut:";
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePicker.Location = new System.Drawing.Point(141, 22);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(200, 33);
+            this.dateTimePicker.TabIndex = 1;
             // 
             // MeniuFreeBook
             // 
@@ -156,6 +251,10 @@ namespace FreeBook.Forms {
             this.CartiImprumutateTabPage.ResumeLayout(false);
             this.CartiImprumutateTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiImprumutateDataGridView)).EndInit();
+            this.statisticiBibliotecaTabPage.ResumeLayout(false);
+            this.statisticiTabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +272,10 @@ namespace FreeBook.Forms {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar cartiImprumutateProgressBar;
         private System.Windows.Forms.Label cartiDisponibileLabel;
+        private System.Windows.Forms.TabControl statisticiTabControl;
+        private System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.DateTimePicker dateTimePicker;
+        public System.Windows.Forms.Label anImprumutLabel;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
