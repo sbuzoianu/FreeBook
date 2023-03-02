@@ -12,22 +12,13 @@ namespace FreeBook.Forms {
         public Task App { get; set; }
         public AfiseazaCarte() {
             InitializeComponent();
-            InitializeWebView();
 
         }
 
-        private void InitializeWebView() {
-            App = continutWebView.EnsureCoreWebView2Async(null);
-        }
 
-        private async  void AfiseazaCarte_Load(object sender, EventArgs e) {
-            // WebBrowser control not available since VS 2019. Instead, use WebView2 nuget - not recommended 
-            await App;
-            continutWebView.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-            if (continutWebView != null && continutWebView.CoreWebView2 != null) {
-                // TO-DO: obtain index value fault
-                continutWebView.CoreWebView2.Navigate(SqlDataAccess.GetCartiPDFPathStrings() + indexCarteLabel.Text + ".pdf");
-            }
+        private void AfiseazaCarte_Load(object sender, EventArgs e) {
+            // TO-DO: check string format like an URI.
+            afiseazaCarteWebBrowser.Url = new Uri(SqlDataAccess.GetCartiPDFPathStrings() + indexCarteLabel.Text + ".pdf");
         }
     }
 }
