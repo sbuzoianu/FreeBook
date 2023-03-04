@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using FreeBook.DataAccess;
+using FreeBook.Models;
+// Visual Studio Shortcut
+// Ctrl + M, P to expand
+// Ctrl + M, O to collapse.
 
 namespace FreeBook.Forms {
     public partial class MeniuFreeBook : Form {
@@ -105,8 +111,47 @@ namespace FreeBook.Forms {
             // mai jos -> incarcare explicita a TabPage-ului
             meniuTabControl.SelectedTab = meniuTabControl.TabPages["cartiDisponibileTabPage"];
             IncarcareCartiDisponibileTab();
+            IncarcareStatisticiBibliotecaTab_NumarUtilizatoriChart();
+            //IncarcareStatisticiBibliotecaTab_CartiChart();
 
             emailUtilizatorLabel.Text += Utilizator.email;
+        }
+
+        private void IncarcareStatisticiBibliotecaTab_NumarUtilizatoriChart() {
+            numarUtilizatoriLunaChart.Series.Clear();
+            dateTimePicker.Format = DateTimePickerFormat.Custom;
+            dateTimePicker.CustomFormat = "yyyy";
+            dateTimePicker.Value = DateTime.Now;
+            Series serie = new Series() {
+                Name = "Luna"
+            };
+
+            DateTime an = dateTimePicker.Value.AddDays(1 - dateTimePicker.Value.DayOfYear);
+            var imprumuturiAn = DatabaseHelper.GetImprumuturiCartiPeAn(an, an.AddYears(1)).Select(x => x.DataImprumut).OrderBy(x => x).Select(x => x.ToString("MMM")).ToList();
+            var stats = imprumuturiAn.GroupBy(x => x).ToList();
+
+            DateTime temp = DateTime.Now.AddDays(1 - DateTime.Now.DayOfYear);
+            for (int i = 0; i < 11; i++) {
+                string data = temp.ToString("MMM");
+                serie.Points.AddXY(data, 0);
+                temp = temp.AddMonths(1);
+            }
+
+            foreach (var item in stats) {
+                serie.Points.AddXY(item.First(), item.Count());
+            }
+
+            numarUtilizatoriLunaChart.Series.Add(serie);
+            numarUtilizatoriLunaChart.ChartAreas[0].AxisX.Interval = 1;
+            numarUtilizatoriLunaChart.Series[0].IsValueShownAsLabel = true;
+            numarUtilizatoriLunaChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            numarUtilizatoriLunaChart.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
+            numarUtilizatoriLunaChart.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            numarUtilizatoriLunaChart.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
+        }
+
+        private void IncarcareStatisticiBibliotecaTab_CartiChart() {
+            throw new NotImplementedException();
         }
 
         private void IncarcareCartiDisponibileTab() {

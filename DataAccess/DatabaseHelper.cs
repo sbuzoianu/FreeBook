@@ -242,6 +242,40 @@ namespace FreeBook
             }
         }
 
+
+        public static List<ImprumutCarteModel> GetImprumuturiCartiPeAn(DateTime yearStartDate, DateTime yearEndDate) {
+            List<ImprumutCarteModel> imprumuturi = new List<ImprumutCarteModel>();
+            int i = 0;
+
+            using (SqlConnection con = new SqlConnection(_connectionString)) {
+                con.Open();
+
+                string cmdText = "Select c.id_carte, c.titlu, c.autor, i.data_imprumut from carti c, imprumut i where c.id_carte = i.id_carte and i.data_imprumut >= @anStart and i.data_imprumut <=@anEnd";
+
+                using (SqlCommand cmd = new SqlCommand(cmdText, con)) {
+                    cmd.Parameters.AddWithValue("anStart", yearStartDate);
+                    cmd.Parameters.AddWithValue("anEnd", yearEndDate);
+                    using (SqlDataReader reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            i++;
+                            DateTime date = (DateTime)reader[3];
+                            ImprumutCarteModel imprumut = new ImprumutCarteModel {
+                                Index = i,
+                                IDCarte = (int)reader[0],
+                                Titlu = (string)reader[1],
+                                Autor = (string)reader[2],
+                                DataImprumut = date,
+                                DataDisponibilitate = date.AddDays(30),
+                                CarteExpirata = date < DateTime.Now ? true : false
+                            };
+                            imprumuturi.Add(imprumut);
+                        }
+                    }
+                }
+            }
+            return imprumuturi;
+        }
+
         private static void ClearDatabase()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))
