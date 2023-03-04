@@ -35,7 +35,6 @@ namespace FreeBook.Forms {
             this.emailUtilizatorLabel = new System.Windows.Forms.Label();
             this.meniuTabControl = new System.Windows.Forms.TabControl();
             this.cartiDisponibileTabPage = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.cartiDisponibileDataGridView = new System.Windows.Forms.DataGridView();
             this.CartiImprumutateTabPage = new System.Windows.Forms.TabPage();
             this.cartiDisponibileLabel = new System.Windows.Forms.Label();
@@ -49,8 +48,11 @@ namespace FreeBook.Forms {
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.anImprumutLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
             this.cartiPopulareChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label2 = new System.Windows.Forms.Label();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iesireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meniuTabControl.SuspendLayout();
             this.cartiDisponibileTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).BeginInit();
@@ -62,6 +64,7 @@ namespace FreeBook.Forms {
             ((System.ComponentModel.ISupportInitialize)(this.numarUtilizatoriLunaChart)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiPopulareChart)).BeginInit();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // emailUtilizatorLabel
@@ -86,7 +89,6 @@ namespace FreeBook.Forms {
             // 
             // cartiDisponibileTabPage
             // 
-            this.cartiDisponibileTabPage.Controls.Add(this.checkBox1);
             this.cartiDisponibileTabPage.Controls.Add(this.cartiDisponibileDataGridView);
             this.cartiDisponibileTabPage.Location = new System.Drawing.Point(4, 22);
             this.cartiDisponibileTabPage.Name = "cartiDisponibileTabPage";
@@ -95,16 +97,6 @@ namespace FreeBook.Forms {
             this.cartiDisponibileTabPage.TabIndex = 0;
             this.cartiDisponibileTabPage.Text = "Carti disponibile";
             this.cartiDisponibileTabPage.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(42, 63);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // cartiDisponibileDataGridView
             // 
@@ -273,16 +265,6 @@ namespace FreeBook.Forms {
             this.tabPage2.Text = "Carti populare";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(270, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 33);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Carti populare";
-            // 
             // cartiPopulareChart
             // 
             chartArea2.Name = "ChartArea1";
@@ -296,6 +278,41 @@ namespace FreeBook.Forms {
             this.cartiPopulareChart.Text = "chart1";
             this.cartiPopulareChart.CustomizeLegend += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs>(this.cartiPopulareChart_CustomizeLegend);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(270, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(198, 33);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Carti populare";
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(825, 24);
+            this.menuStrip2.TabIndex = 2;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // menuToolStripMenuItem
+            // 
+            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iesireToolStripMenuItem});
+            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.menuToolStripMenuItem.Text = "Menu";
+            // 
+            // iesireToolStripMenuItem
+            // 
+            this.iesireToolStripMenuItem.Name = "iesireToolStripMenuItem";
+            this.iesireToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.iesireToolStripMenuItem.Text = "Iesire";
+            this.iesireToolStripMenuItem.Click += new System.EventHandler(this.iesireToolStripMenuItem_Click);
+            // 
             // MeniuFreeBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,12 +320,12 @@ namespace FreeBook.Forms {
             this.ClientSize = new System.Drawing.Size(825, 488);
             this.Controls.Add(this.meniuTabControl);
             this.Controls.Add(this.emailUtilizatorLabel);
+            this.Controls.Add(this.menuStrip2);
             this.Name = "MeniuFreeBook";
             this.Text = "MeniuFreeBook";
             this.Load += new System.EventHandler(this.MeniuFreeBook_Load);
             this.meniuTabControl.ResumeLayout(false);
             this.cartiDisponibileTabPage.ResumeLayout(false);
-            this.cartiDisponibileTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).EndInit();
             this.CartiImprumutateTabPage.ResumeLayout(false);
             this.CartiImprumutateTabPage.PerformLayout();
@@ -321,6 +338,8 @@ namespace FreeBook.Forms {
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiPopulareChart)).EndInit();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,9 +362,11 @@ namespace FreeBook.Forms {
         public System.Windows.Forms.DateTimePicker dateTimePicker;
         public System.Windows.Forms.Label anImprumutLabel;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataVisualization.Charting.Chart numarUtilizatoriLunaChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart cartiPopulareChart;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iesireToolStripMenuItem;
     }
 }

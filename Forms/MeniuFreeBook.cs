@@ -187,5 +187,9 @@ namespace FreeBook.Forms {
             cartiPopulareChart.Legends[0].Alignment = StringAlignment.Center;
             cartiPopulareChart.Legends[0].Title = "Carti Imprumutate";
         }
+
+        private void iesireToolStripMenuItem_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }
