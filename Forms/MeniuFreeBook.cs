@@ -112,7 +112,7 @@ namespace FreeBook.Forms {
             meniuTabControl.SelectedTab = meniuTabControl.TabPages["cartiDisponibileTabPage"];
             IncarcareCartiDisponibileTab();
             IncarcareStatisticiBibliotecaTab_NumarUtilizatoriChart();
-            //IncarcareStatisticiBibliotecaTab_CartiChart();
+            IncarcareStatisticiBibliotecaTab_CartiChartPie();
 
             emailUtilizatorLabel.Text += Utilizator.email;
         }
@@ -150,8 +150,21 @@ namespace FreeBook.Forms {
             numarUtilizatoriLunaChart.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
         }
 
-        private void IncarcareStatisticiBibliotecaTab_CartiChart() {
-            throw new NotImplementedException();
+        private void IncarcareStatisticiBibliotecaTab_CartiChartPie() {
+            List<string> carti = DatabaseHelper.GetCartiCitite().OrderBy(x => x).ToList();
+            var celeMaiCitieCarti = carti.GroupBy(x => x).OrderByDescending(x => x.Count()).Take(4).ToList();
+            cartiPopulareChart.Series.Clear();
+            Series series = new Series("Carti populare") {
+                ChartType = SeriesChartType.Pie
+            };
+
+            foreach (var item in celeMaiCitieCarti) {
+                series.Points.AddXY(item.First(), item.Count());
+            }
+
+            cartiPopulareChart.Series.Add(series);
+            cartiPopulareChart.Series[0].IsValueShownAsLabel = true;
+
         }
 
         private void IncarcareCartiDisponibileTab() {
@@ -168,5 +181,11 @@ namespace FreeBook.Forms {
             buttonImprumutaCarte.UseColumnTextForButtonValue = true;
         }
 
+        private void cartiPopulareChart_CustomizeLegend(object sender, CustomizeLegendEventArgs e) {
+            cartiPopulareChart.Legends[0].Docking = Docking.Bottom;
+            cartiPopulareChart.Legends[0].BorderColor = Color.Black;
+            cartiPopulareChart.Legends[0].Alignment = StringAlignment.Center;
+            cartiPopulareChart.Legends[0].Title = "Carti Imprumutate";
+        }
     }
 }

@@ -276,6 +276,24 @@ namespace FreeBook
             return imprumuturi;
         }
 
+        public static List<String> GetCartiCitite() {
+            List<string> carti = new List<string>();
+
+            using (SqlConnection con = new SqlConnection(_connectionString)) {
+                con.Open();
+                string cmdText = "Select Titlu from carti c, imprumut i where c.id_carte = i.id_carte;";
+                using (SqlCommand cmd = new SqlCommand(cmdText, con)) {
+                    using (SqlDataReader reader = cmd.ExecuteReader()) {
+                        while (reader.Read()) {
+                            carti.Add((string)reader[0]);
+                        }
+                    }
+                }
+            }
+
+            return carti;
+        }
+
         private static void ClearDatabase()
         {
             using (SqlConnection con = new SqlConnection(_connectionString))

@@ -30,6 +30,8 @@ namespace FreeBook.Forms {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.emailUtilizatorLabel = new System.Windows.Forms.Label();
             this.meniuTabControl = new System.Windows.Forms.TabControl();
             this.cartiDisponibileTabPage = new System.Windows.Forms.TabPage();
@@ -47,6 +49,8 @@ namespace FreeBook.Forms {
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.anImprumutLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cartiPopulareChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.meniuTabControl.SuspendLayout();
             this.cartiDisponibileTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cartiDisponibileDataGridView)).BeginInit();
@@ -56,6 +60,8 @@ namespace FreeBook.Forms {
             this.statisticiTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numarUtilizatoriLunaChart)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cartiPopulareChart)).BeginInit();
             this.SuspendLayout();
             // 
             // emailUtilizatorLabel
@@ -257,6 +263,8 @@ namespace FreeBook.Forms {
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cartiPopulareChart);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -264,6 +272,29 @@ namespace FreeBook.Forms {
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Carti populare";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(270, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(198, 33);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Carti populare";
+            // 
+            // cartiPopulareChart
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.cartiPopulareChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.cartiPopulareChart.Legends.Add(legend2);
+            this.cartiPopulareChart.Location = new System.Drawing.Point(7, 78);
+            this.cartiPopulareChart.Name = "cartiPopulareChart";
+            this.cartiPopulareChart.Size = new System.Drawing.Size(730, 283);
+            this.cartiPopulareChart.TabIndex = 1;
+            this.cartiPopulareChart.Text = "chart1";
+            this.cartiPopulareChart.CustomizeLegend += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.CustomizeLegendEventArgs>(this.cartiPopulareChart_CustomizeLegend);
             // 
             // MeniuFreeBook
             // 
@@ -287,6 +318,9 @@ namespace FreeBook.Forms {
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numarUtilizatoriLunaChart)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cartiPopulareChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,5 +345,7 @@ namespace FreeBook.Forms {
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataVisualization.Charting.Chart numarUtilizatoriLunaChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart cartiPopulareChart;
+        private System.Windows.Forms.Label label2;
     }
 }
